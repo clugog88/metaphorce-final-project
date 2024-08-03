@@ -1,33 +1,16 @@
 # Project Name
-Short description of your project: what it does, its purpose, and its goals.
+Microservices-based e-commerce application.
+
+# Project Description
+The purpose of the project is to create a distributed application based on microservices which allows consumer users to purchase items published by other supplier users (business scheme known as "shopping cart").
 
 ## Getting Started
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The project consists of 7 projects (4 libraries and 3 microservices) which are listed below:
+
+* common-exceptions: Library to contain the exceptions used in the system
+* common-entities: Library that centralizes entities mapped to data persistence.
+* common-authentication: Library that encapsulates the classes related to the authentication of users who will use the developed services.
+* common-definitions: Library dedicated to storing the other common definitions shared by the projects.
 
 ### Prerequisites
-What things you need to install the software and how to install them:
-
-### Installing
-A step by step series of examples that tell you how to get a development environment running.
-
-#### Step 1: Clone the repository
-
-
-#### Step 2: Navigate to the project directory
-
-
-#### Step 3: Install dependencies
-
-
-#### Step 4: Run the application locally
-
-
-## Running the tests
-Explain how to run the automated tests for this system.
-### Unit Tests
-How to run the unit tests:
-
-
-
-### Integration Tests
-How to run integration tests:
+Once the libraries are compiled, the following projects have an embedded server which allows the initialization of the services without the need to install an additional server.

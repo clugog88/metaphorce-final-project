@@ -60,9 +60,6 @@ public class JwtServiceImpl implements JwtService {
 				.map(c -> c.replaceFirst("^ROLE_", ""))
 				.collect(Collectors.collectingAndThen(Collectors.toSet(), Collections::unmodifiableSet));
 		claims.put("authorities", roles);
-
-//    	claims.put("username", userDetails.getUsername());
-
 		return generateToken(claims, userDetails);
 	}
 
@@ -136,7 +133,6 @@ public class JwtServiceImpl implements JwtService {
 	 */
 	private SecretKey getSignInKey() {
 		byte[] keyBytes = Decoders.BASE64.decode(jwtSecurityProperties.getSecretKey());
-//		return Keys.hmacShaKeyFor(keyBytes);
 		return new SecretKeySpec( keyBytes , jwtSecurityProperties.getAlgorithm() );
 	}
 
@@ -174,15 +170,15 @@ public class JwtServiceImpl implements JwtService {
 		} 
 		catch (SignatureException e) {
 			log.warn("Error validating received JWT.", e);
-			throw new BadCredentialsException("El JWT enviado no es correcto.");
+			throw new BadCredentialsException("The JWT is not correct.");
 		}
 		catch (UnsupportedJwtException e) {
 			log.warn("Error parsing received JWT.", e);
-			throw new BadCredentialsException("El JWT enviado no es correcto.");
+			throw new BadCredentialsException("The JWT is not correct.");
 		}
 		catch (Exception e) {
 			log.error("Error processing received JWT.", e);
-			throw new BadCredentialsException("El JWT enviado no es correcto.");
+			throw new BadCredentialsException("The JWT is not correct.");
 		}
 		return claims;
 	}
