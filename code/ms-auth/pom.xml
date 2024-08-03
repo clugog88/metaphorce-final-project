@@ -33,6 +33,11 @@
 		</dependency>
 		<dependency>
 			<groupId>com.metaphorce</groupId>
+			<artifactId>metaphorce.common-exceptions</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.metaphorce</groupId>
 			<artifactId>metaphorce.common-definitions</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

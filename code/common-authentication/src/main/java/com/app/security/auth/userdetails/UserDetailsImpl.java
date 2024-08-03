@@ -1,4 +1,4 @@
-package com.app.security.model.userdetails;
+package com.app.security.auth.userdetails;
 
 import java.util.Collection;
 import java.util.Collections;

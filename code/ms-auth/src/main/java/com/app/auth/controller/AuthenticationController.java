@@ -16,9 +16,8 @@ import com.app.auth.controller.model.ResponseLogin;
 import com.app.auth.controllers.models.GenericResponse;
 import com.app.auth.services.AuthenticationService;
 import com.app.auth.services.JwtService;
-import com.app.errors.exceptions.InvalidParametersException;
-import com.app.errors.utils.ExceptionUtil;
-import com.app.security.models.auth.AuthenticationRequest;
+import com.app.errors.exceptions.global.InvalidParametersException;
+import com.app.security.auth.model.AuthenticationRequest;
 
 import jakarta.validation.Valid;
 
@@ -40,7 +39,9 @@ public class AuthenticationController {
     
 	@PostMapping(value = "/login")
 	@ResponseStatus(HttpStatus.OK)
-	public GenericResponse<ResponseLogin> login(@Valid @RequestBody AuthenticationRequest authRequest, BindingResult bindingResult){
+	public GenericResponse<ResponseLogin> login(
+			@Valid @RequestBody AuthenticationRequest authRequest, 
+			BindingResult bindingResult){
 		
 		log.info("Validando los parametros recibidos.");
 		if(bindingResult.hasErrors()) {
@@ -48,22 +49,15 @@ public class AuthenticationController {
 		}
 		
 		log.info("Lanzando la autenticacion del usuario.");
-		try {
-			UserDetails authUser = authenticationService.authenticate( authRequest );
-			String jwtToken = jwtService.generateToken( authUser );
-	        long expirationTime = jwtService.getExpirationTime();
-	        
-	        ResponseLogin responseDto = new ResponseLogin();
-	        responseDto.setToken( jwtToken );
-	        responseDto.setExpiresIn( expirationTime );
+		UserDetails authUser = authenticationService.authenticate( authRequest );
+		String jwtToken = jwtService.generateToken( authUser );
+        long expirationTime = jwtService.getExpirationTime();
+        
+        ResponseLogin responseDto = new ResponseLogin();
+        responseDto.setToken( jwtToken );
+        responseDto.setExpiresIn( expirationTime );
 
-	        return GenericResponse.ok( responseDto );
-		}
-		catch (Exception e) {
-			log.error("Error al autenticar al usuario. ", e);
-			ExceptionUtil.handleException( e );
-			return null;
-		}
+        return GenericResponse.ok( responseDto );
 	}
 	
 }

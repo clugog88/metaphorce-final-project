@@ -19,11 +19,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.auth.controllers.models.GenericResponse;
-import com.app.errors.exceptions.InvalidParametersException;
-import com.app.errors.utils.ExceptionUtil;
+import com.app.errors.exceptions.global.InvalidParametersException;
 import com.app.persistence.entities.security.CTUser;
-import com.app.persistence.entities.security.enums.RoleEnum;
-import com.app.persistence.entities.security.enums.RoleEnumAttributeConverter;
+import com.app.persistence.entities.security.enums.UserRoleEnum;
+import com.app.persistence.entities.security.support.UserRoleEnumAttributeConverter;
 import com.app.users.controllers.model.RequestAddUser;
 import com.app.users.controllers.model.RequestUpdateUser;
 import com.app.users.controllers.model.RequestUpdateUserPassword;
@@ -45,22 +44,14 @@ public class UserController {
 	private UserServices userServices;
 	
 	@Autowired 
-	private RoleEnumAttributeConverter roleEnumConverter;
+	private UserRoleEnumAttributeConverter roleEnumConverter;
 	
 	@GetMapping(value = "/list")
 	@ResponseStatus(HttpStatus.OK)
 	public GenericResponse< List<RequestAddUser> > list(Authentication authentication) {
-		
 		log.info("Lanzando la busqueda de la informacion.");
-		try {
-			List<RequestAddUser> list = userServices.getList();
-			return GenericResponse.ok( list );
-		}
-		catch (Exception e) {
-			log.error("Error buscando la informacion. ", e);
-			ExceptionUtil.handleException( e );
-			return null;
-		}
+		List<RequestAddUser> list = userServices.getList();
+		return GenericResponse.ok( list );
 	}
 	
 	@GetMapping(value = "/{id}")
@@ -73,74 +64,53 @@ public class UserController {
 		}
 		
 		log.info("Lanzando la busqueda de la informacion.");
-		try {
-			CTUser user = userServices.getById( id );
-			return GenericResponse.ok( user );
-		}
-		catch (Exception e) {
-			log.error("Error buscando la informacion. ", e);
-			ExceptionUtil.handleException( e );
-			return null;
-		}
+		CTUser user = userServices.getById( id );
+		return GenericResponse.ok( user );
 	}
 	
 	@PostMapping(value = "/add")
 	@ResponseStatus(HttpStatus.CREATED)
-	public GenericResponse<?> add(@Valid @RequestBody RequestAddUser dto, BindingResult bindingResult, Authentication authentication){
+	public GenericResponse<Void> add(@Valid @RequestBody RequestAddUser dto, BindingResult bindingResult, Authentication authentication){
 		
 		log.info("Validando los parametros recibidos.");
 		if(bindingResult.hasErrors()) {
 			throw InvalidParametersException.parseToException( bindingResult );
 		}
 		
-		RoleEnum role = roleEnumConverter.convertToEntityAttribute( dto.getRole() );
+		UserRoleEnum role = roleEnumConverter.convertToEntityAttribute( dto.getRole() );
 		if(role == null) {
 			throw new InvalidParametersException( "El valor del campo 'rol' no es valido." );
 		}
 		dto.setRoleEnum( role );
 		
 		log.info("Lanzando el guardado de la informacion.");
-		try {
-			userServices.save( dto );
-			return GenericResponse.ok();
-		}
-		catch (Exception e) {
-			log.error("Error guardando la informacion. ", e);
-			ExceptionUtil.handleException( e );
-			return null;
-		}
+		userServices.save( dto );
+		return GenericResponse.ok();
 	}
 	
 	@PutMapping(value = "/update")
 	@ResponseStatus(HttpStatus.OK)
-	public GenericResponse<?> update(@Valid @RequestBody RequestUpdateUser dto, BindingResult bindingResult, Authentication authentication){
+	public GenericResponse<Void> update(@Valid @RequestBody RequestUpdateUser dto, BindingResult bindingResult, Authentication authentication){
 		
 		log.info("Validando los parametros recibidos.");
 		if(bindingResult.hasErrors()) {
 			throw InvalidParametersException.parseToException( bindingResult );
 		}
 		
-		RoleEnum role = roleEnumConverter.convertToEntityAttribute( dto.getRole() );
+		UserRoleEnum role = roleEnumConverter.convertToEntityAttribute( dto.getRole() );
 		if(role == null) {
 			throw new InvalidParametersException( "El valor del campo 'rol' no es valido." );
 		}
 		dto.setRoleEnum( role );
 		
 		log.info("Lanzando la actualizacion de la informacion.");
-		try {
-			userServices.update( dto );
-			return GenericResponse.ok();
-		}
-		catch (Exception e) {
-			log.error("Error actualizando la informacion. ", e);
-			ExceptionUtil.handleException( e );
-			return null;
-		}
+		userServices.update( dto );
+		return GenericResponse.ok();
 	}
 	
 	@PutMapping(value = "/updatePassword")
 	@ResponseStatus(HttpStatus.OK)
-	public GenericResponse<?> updatePassword(@Valid @RequestBody RequestUpdateUserPassword dto, BindingResult bindingResult, Authentication authentication){
+	public GenericResponse<Void> updatePassword(@Valid @RequestBody RequestUpdateUserPassword dto, BindingResult bindingResult, Authentication authentication){
 		
 		log.info("Validando los parametros recibidos.");
 		if(bindingResult.hasErrors()) {
@@ -148,15 +118,8 @@ public class UserController {
 		}
 		
 		log.info("Lanzando la actualizacion de la informacion.");
-		try {
-			userServices.updatePassword( dto );
-			return GenericResponse.ok();
-		}
-		catch (Exception e) {
-			log.error("Error actualizando la informacion. ", e);
-			ExceptionUtil.handleException( e );
-			return null;
-		}
+		userServices.updatePassword( dto );
+		return GenericResponse.ok();
 	}
 	
 	@DeleteMapping(value = "/{id}")
@@ -169,15 +132,8 @@ public class UserController {
 		}
 		
 		log.info("Lanzando la eliminacion de la informacion.");
-		try {
-			userServices.delete( id );
-			return GenericResponse.ok();
-		}
-		catch (Exception e) {
-			log.error("Error eliminando la informacion. ", e);
-			ExceptionUtil.handleException( e );
-			return null;
-		}
+		userServices.delete( id );
+		return GenericResponse.ok();
 	}
 	
 }

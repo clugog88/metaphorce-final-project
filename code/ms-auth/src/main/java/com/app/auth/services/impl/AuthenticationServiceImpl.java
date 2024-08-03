@@ -11,9 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.app.auth.services.AuthenticationService;
-import com.app.errors.exceptions.AppException;
-import com.app.errors.exceptions.BadCredentialsException;
-import com.app.security.models.auth.AuthenticationRequest;
+import com.app.errors.exceptions.auth.BadCredentialsException;
+import com.app.security.auth.model.AuthenticationRequest;
 
 /** 
  * 
@@ -40,15 +39,15 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     		authToken = (UsernamePasswordAuthenticationToken) authManager.authenticate( authToken );
     	}
     	catch (InternalAuthenticationServiceException e) {
-    		if( e.getCause() instanceof AppException ) {
-    			throw (AppException) e.getCause();
-			}
+//    		if( e.getCause() instanceof AppException ) {
+//    			throw (AppException) e.getCause();
+//			}
     		throw new BadCredentialsException();
     	}
     	catch (Exception e) {
-    		if( e instanceof AppException ) {
-    			throw e;
-			}
+//    		if( e instanceof AppException ) {
+//    			throw e;
+//			}
     		throw new BadCredentialsException();
     	}
         

@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.configuration.components.JwtSecurityProperties;
 import com.app.configuration.services.JwtService;
-import com.app.errors.exceptions.BadCredentialsException;
+import com.app.errors.exceptions.auth.BadCredentialsException;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

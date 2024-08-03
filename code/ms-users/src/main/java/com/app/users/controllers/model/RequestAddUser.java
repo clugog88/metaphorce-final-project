@@ -2,7 +2,7 @@ package com.app.users.controllers.model;
 
 import org.hibernate.validator.constraints.Length;
 
-import com.app.persistence.entities.security.enums.RoleEnum;
+import com.app.persistence.entities.security.enums.UserRoleEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.validation.constraints.NotEmpty;
@@ -34,6 +34,6 @@ public class RequestAddUser {
 	private String role;
 	
 	@JsonIgnore
-	private RoleEnum roleEnum;
+	private UserRoleEnum roleEnum;
 	
 }

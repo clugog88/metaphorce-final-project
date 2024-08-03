@@ -1,6 +1,6 @@
 package com.app.users.controllers.model;
 
-import com.app.persistence.entities.security.enums.RoleEnum;
+import com.app.persistence.entities.security.enums.UserRoleEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.validation.constraints.NotEmpty;
@@ -35,6 +35,6 @@ public class RequestUpdateUser {
 	private String role;
 	
 	@JsonIgnore
-	private RoleEnum roleEnum;
+	private UserRoleEnum roleEnum;
 	
 }

@@ -1,4 +1,4 @@
-package com.app.errors.exceptions;
+package com.app.errors.exceptions.global;
 
 import java.util.List;
 import java.util.stream.Stream;

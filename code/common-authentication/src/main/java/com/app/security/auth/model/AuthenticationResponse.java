@@ -1,4 +1,4 @@
-package com.app.security.models.auth;
+package com.app.security.auth.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

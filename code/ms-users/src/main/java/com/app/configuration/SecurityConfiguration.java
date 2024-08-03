@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.app.configuration.components.JwtAuthenticationFilter;
 import com.app.errors.support.CustomAuthenticationEntryPoint;
-import com.app.persistence.entities.security.enums.RoleEnum;
+import com.app.persistence.entities.security.enums.UserRoleEnum;
 
 /**
  * 
@@ -45,12 +45,12 @@ public class SecurityConfiguration {
 			
 //			.securityMatcher("/user/**")
 			.authorizeHttpRequests( auth -> auth
-					.requestMatchers( HttpMethod.GET,    "/user/list"           ).hasAnyRole( RoleEnum.ADMIN.name(), RoleEnum.USER.name()  )
-					.requestMatchers( HttpMethod.GET,    "/user/**"             ).hasAnyRole( RoleEnum.ADMIN.name(), RoleEnum.USER.name()  )
-					.requestMatchers( HttpMethod.POST,   "/user/add"            ).hasAnyRole( RoleEnum.ADMIN.name()  )
-					.requestMatchers( HttpMethod.PUT,    "/user/update"         ).hasAnyRole( RoleEnum.ADMIN.name()  )
-					.requestMatchers( HttpMethod.PUT,    "/user/updatePassword" ).hasAnyRole( RoleEnum.ADMIN.name()  )
-					.requestMatchers( HttpMethod.DELETE, "/user/**"             ).hasAnyRole( RoleEnum.ADMIN.name()  )
+					.requestMatchers( HttpMethod.GET,    "/user/list"           ).hasAnyRole( UserRoleEnum.ADMIN.name(), UserRoleEnum.USER.name()  )
+					.requestMatchers( HttpMethod.GET,    "/user/**"             ).hasAnyRole( UserRoleEnum.ADMIN.name(), UserRoleEnum.USER.name()  )
+					.requestMatchers( HttpMethod.POST,   "/user/add"            ).hasAnyRole( UserRoleEnum.ADMIN.name()  )
+					.requestMatchers( HttpMethod.PUT,    "/user/update"         ).hasAnyRole( UserRoleEnum.ADMIN.name()  )
+					.requestMatchers( HttpMethod.PUT,    "/user/updatePassword" ).hasAnyRole( UserRoleEnum.ADMIN.name()  )
+					.requestMatchers( HttpMethod.DELETE, "/user/**"             ).hasAnyRole( UserRoleEnum.ADMIN.name()  )
 //					.anyRequest().authenticated() // It allow every request to any end point while is authenticated. 
 			)
 			

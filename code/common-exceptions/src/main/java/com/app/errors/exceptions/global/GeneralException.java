@@ -1,4 +1,4 @@
-package com.app.errors.exceptions;
+package com.app.errors.exceptions.global;
 
 import com.app.errors.constants.ExceptionMessages;
 
