@@ -17,5 +17,13 @@ public class BadCredentialsException extends RuntimeException {
 	public BadCredentialsException(String message) {
         super(message);
     }
+	
+	public BadCredentialsException(Throwable cause) {
+        super(ExceptionMessages.EXCEPTION_MESSAGE__BadCredentials, cause);
+    }
+	
+	public BadCredentialsException(String message, Throwable cause) {
+        super(message, cause);
+    }
     
 }

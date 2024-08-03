@@ -20,11 +20,11 @@ import com.app.security.auth.userdetails.UserDetailsImpl;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private CTUserRepository userRepository;
+    private CTUserRepository ctUserRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        Optional<CTUser> userOpt = userRepository.findByUsername( username );
+        Optional<CTUser> userOpt = ctUserRepository.findByUsername( username );
         if (userOpt.isEmpty()) {
             throw new UsernameNotFoundException( username );
         }

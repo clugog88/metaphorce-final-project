@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EntityScan("com.app.persistence.entities")
 @ComponentScan({"com.app.errors", "com.app"})
-@EnableJpaRepositories("com.app.users.persistence.repositories")
+@EnableJpaRepositories("com.app.users.services.repositories")
 public class UsersApplication {
 
 	public static void main(String[] args) {

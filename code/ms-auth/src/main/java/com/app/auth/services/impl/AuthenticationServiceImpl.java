@@ -4,14 +4,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.app.auth.services.AuthenticationService;
-import com.app.errors.exceptions.auth.BadCredentialsException;
+import com.app.errors.exceptions.global.GeneralException;
 import com.app.security.auth.model.AuthenticationRequest;
 
 /** 
@@ -38,14 +40,17 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     	try {
     		authToken = (UsernamePasswordAuthenticationToken) authManager.authenticate( authToken );
     	}
-    	catch (InternalAuthenticationServiceException e) {
-    		if( e.getCause() instanceof RuntimeException ex ) {
-    			throw ex;
+    	catch (InternalAuthenticationServiceException | BadCredentialsException e) {
+    		if( e instanceof AuthenticationException ex ) {
+    			throw new com.app.errors.exceptions.auth.BadCredentialsException( ex );
 			}
-    		throw new BadCredentialsException();
+    		if( e.getCause() instanceof AuthenticationException ex ) {
+    			throw new com.app.errors.exceptions.auth.BadCredentialsException( ex );
+			}
+    		throw new com.app.errors.exceptions.auth.BadCredentialsException( e );
     	}
-    	catch (RuntimeException e) {
-    		throw new BadCredentialsException();
+    	catch (Exception ex) {
+    		throw new GeneralException( ex );
     	}
         
     	SecurityContextHolder.getContext().setAuthentication( authToken );

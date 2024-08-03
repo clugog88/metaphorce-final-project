@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @EntityScan("com.app.persistence.entities")
 @ComponentScan({"com.app.errors", "com.app.auth"})
-@EnableJpaRepositories("com.app.auth.persistence.repositories")
+@EnableJpaRepositories("com.app.auth.services.repositories")
 public class AuthApplication {
 	
 	public static void main(String[] args) {
