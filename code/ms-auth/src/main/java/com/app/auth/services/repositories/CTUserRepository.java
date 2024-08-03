@@ -1,4 +1,4 @@
-package com.app.auth.persistence.repositories;
+package com.app.auth.services.repositories;
 
 import java.util.Optional;
 

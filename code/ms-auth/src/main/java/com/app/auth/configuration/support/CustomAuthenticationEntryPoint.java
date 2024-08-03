@@ -1,4 +1,4 @@
-package com.app.errors.support;
+package com.app.auth.configuration.support;
 
 import java.io.IOException;
 

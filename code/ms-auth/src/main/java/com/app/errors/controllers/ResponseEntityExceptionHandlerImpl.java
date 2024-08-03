@@ -31,35 +31,35 @@ public class ResponseEntityExceptionHandlerImpl extends ResponseEntityExceptionH
 	@ResponseStatus(value = HttpStatus.UNAUTHORIZED )
 	@ExceptionHandler({ UsernameNotFoundException.class })
     public GenericResponse<Object> handleUsernameNotFoundException(Exception ex, WebRequest request) {
-		log.error("Error handling: ", ex);
+		log.error("Handling error: {}", ex.getMessage());
     	return GenericResponse.error( ErrorMessages.ERROR_MESSAGE__AccessDenied );
     }
 	
 	@ResponseStatus(value = HttpStatus.FORBIDDEN )
 	@ExceptionHandler({ BadCredentialsException.class, AccessDeniedException.class })
     public GenericResponse<Object> handleBadCredentialsException(Exception ex, WebRequest request) {
-		log.error("Error handling: ", ex);
+		log.error("Handling error: {}", ex.getMessage());
     	return GenericResponse.error( ErrorMessages.ERROR_MESSAGE__AccessDenied );
     }
 	
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	@ExceptionHandler({ EntityNotFoundException.class })
     public GenericResponse<Object> handleEntityNotFoundException(Exception ex, WebRequest request) {
-		log.error("Error handling: ", ex);
+		log.error("Handling error: {}", ex.getMessage());
     	return GenericResponse.error( ErrorMessages.ERROR_MESSAGE__EntityNotFound );
     }
 	
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST )
 	@ExceptionHandler({ UniqueEntityDuplicatedException.class })
     public GenericResponse<Object> handleUniqueEntityDuplicatedException(Exception ex, WebRequest request) {
-		log.error("Error handling: ", ex);
+		log.error("Handling error: {}", ex.getMessage());
     	return GenericResponse.error( ErrorMessages.ERROR_MESSAGE__UniqueEntityDuplicated );
     }
 	
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST )
 	@ExceptionHandler({ InvalidParametersException.class })
     public GenericResponse<Object> handleInvalidParametersException(Exception ex, WebRequest request) {
-		log.error("Error handling: ", ex);
+		log.error("Handling error: {}", ex.getMessage());
     	return GenericResponse.error( ex.getMessage() );
     }
 	

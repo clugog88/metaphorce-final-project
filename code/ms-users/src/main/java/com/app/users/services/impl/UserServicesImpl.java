@@ -17,8 +17,8 @@ import com.app.persistence.entities.security.CTUser;
 import com.app.users.controllers.model.RequestAddUser;
 import com.app.users.controllers.model.RequestUpdateUser;
 import com.app.users.controllers.model.RequestUpdateUserPassword;
-import com.app.users.persistence.repositories.CTUserRepository;
 import com.app.users.services.UserServices;
+import com.app.users.services.repositories.CTUserRepository;
 
 /** 
  * 

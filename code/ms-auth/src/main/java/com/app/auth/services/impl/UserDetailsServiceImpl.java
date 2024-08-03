@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
-import com.app.auth.persistence.repositories.CTUserRepository;
+import com.app.auth.services.repositories.CTUserRepository;
 import com.app.errors.exceptions.auth.UsernameNotFoundException;
 import com.app.persistence.entities.security.CTUser;
 import com.app.security.auth.userdetails.UserDetailsImpl;

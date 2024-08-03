@@ -14,8 +14,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.app.configuration.components.JwtAuthenticationFilter;
-import com.app.errors.support.CustomAuthenticationEntryPoint;
+import com.app.configuration.filters.JwtAuthenticationFilter;
+import com.app.configuration.support.CustomAuthenticationEntryPoint;
 import com.app.persistence.entities.security.enums.UserRoleEnum;
 
 /**

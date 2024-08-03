@@ -1,4 +1,4 @@
-package com.app.configuration.services;
+package com.app.configuration.security.services;
 
 import java.util.Map;
 import java.util.function.Function;

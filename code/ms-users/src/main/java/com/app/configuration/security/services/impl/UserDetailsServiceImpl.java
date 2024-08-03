@@ -1,4 +1,4 @@
-package com.app.configuration.services.impl;
+package com.app.configuration.security.services.impl;
 
 import java.util.Optional;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import com.app.errors.exceptions.auth.UsernameNotFoundException;
 import com.app.persistence.entities.security.CTUser;
 import com.app.security.auth.userdetails.UserDetailsImpl;
-import com.app.users.persistence.repositories.CTUserRepository;
+import com.app.users.services.repositories.CTUserRepository;
 
 /** 
  * 

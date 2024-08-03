@@ -1,4 +1,4 @@
-package com.app.configuration.components;
+package com.app.auth.configuration.properties;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;

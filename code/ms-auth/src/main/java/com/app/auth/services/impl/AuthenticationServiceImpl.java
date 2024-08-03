@@ -39,15 +39,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     		authToken = (UsernamePasswordAuthenticationToken) authManager.authenticate( authToken );
     	}
     	catch (InternalAuthenticationServiceException e) {
-//    		if( e.getCause() instanceof AppException ) {
-//    			throw (AppException) e.getCause();
-//			}
+    		if( e.getCause() instanceof RuntimeException ex ) {
+    			throw ex;
+			}
     		throw new BadCredentialsException();
     	}
-    	catch (Exception e) {
-//    		if( e instanceof AppException ) {
-//    			throw e;
-//			}
+    	catch (RuntimeException e) {
     		throw new BadCredentialsException();
     	}
         

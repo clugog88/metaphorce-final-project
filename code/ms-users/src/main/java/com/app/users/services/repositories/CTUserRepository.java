@@ -1,4 +1,4 @@
-package com.app.users.persistence.repositories;
+package com.app.users.services.repositories;
 
 import java.util.Optional;
 

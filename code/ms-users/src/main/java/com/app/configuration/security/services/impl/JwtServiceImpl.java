@@ -1,4 +1,4 @@
-package com.app.configuration.services.impl;
+package com.app.configuration.security.services.impl;
 
 import java.util.Collections;
 import java.util.Date;
@@ -18,8 +18,8 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.app.configuration.components.JwtSecurityProperties;
-import com.app.configuration.services.JwtService;
+import com.app.configuration.properties.JwtSecurityProperties;
+import com.app.configuration.security.services.JwtService;
 import com.app.errors.exceptions.auth.BadCredentialsException;
 
 import io.jsonwebtoken.Claims;

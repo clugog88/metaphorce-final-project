@@ -18,7 +18,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.app.auth.configuration.components.JwtSecurityProperties;
+import com.app.auth.configuration.properties.JwtSecurityProperties;
 import com.app.auth.services.JwtService;
 import com.app.errors.exceptions.auth.BadCredentialsException;
 
