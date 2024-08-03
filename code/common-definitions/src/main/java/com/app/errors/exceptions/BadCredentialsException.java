@@ -1,15 +1,17 @@
 package com.app.errors.exceptions;
 
+import com.app.errors.constants.ExceptionMessages;
+
 /** 
  * 
  * @Author Ing. Christhian Lugo Govea.
  */
-public class BadCredentialsException extends AppException {
+public class BadCredentialsException extends RuntimeException {
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5381203305453991918L;
 
 	public BadCredentialsException() {
-        super("Bad credentials exception.");
+        super( ExceptionMessages.EXCEPTION_MESSAGE__BadCredentials );
     }
 	
 	public BadCredentialsException(String message) {

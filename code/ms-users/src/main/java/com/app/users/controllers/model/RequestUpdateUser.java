@@ -1,6 +1,6 @@
 package com.app.users.controllers.model;
 
-import com.app.persistence.entities.security.support.RoleEnum;
+import com.app.persistence.entities.security.enums.RoleEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.validation.constraints.NotEmpty;

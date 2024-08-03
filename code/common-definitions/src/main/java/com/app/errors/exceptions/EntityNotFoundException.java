@@ -1,15 +1,17 @@
 package com.app.errors.exceptions;
 
+import com.app.errors.constants.ExceptionMessages;
+
 /** 
  * 
  * @Author Ing. Christhian Lugo Govea.
  */
-public class EntityNotFoundException extends AppException {
+public class EntityNotFoundException extends RuntimeException {
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 4021471828998921835L;
 
 	public EntityNotFoundException() {
-        super("Entity not found exception.");
+        super( ExceptionMessages.EXCEPTION_MESSAGE__EntityNotFound );
     }
 	
 	public EntityNotFoundException(String message) {

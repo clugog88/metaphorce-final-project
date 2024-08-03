@@ -1,4 +1,4 @@
-package com.app.auth.controllers.models;
+package com.app.support;
 
 import java.io.IOException;
 import java.time.LocalDateTime;

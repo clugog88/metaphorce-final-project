@@ -5,11 +5,10 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.app.persistence.entities.security.CTUser;
-import com.app.persistence.entities.security.support.RoleEnum;
+import com.app.persistence.entities.security.enums.UserRoleEnum;
 
 import lombok.AllArgsConstructor;
 
@@ -21,16 +20,13 @@ import lombok.AllArgsConstructor;
 @SuppressWarnings("serial")
 public class UserDetailsImpl implements UserDetails {
 	
-	private final String ROLE_PREFIX = "ROLE_";
-	
 	private CTUser user;
-	private RoleEnum role;
+	private UserRoleEnum role;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		if(user != null && role != null) {
-			return List.of( new SimpleGrantedAuthority( ROLE_PREFIX + role.name() ) );
-//			return List.of( new SimpleGrantedAuthority( role.name() ) );
+			return List.of( role );
 		}
 		return Collections.emptyList();
 	}

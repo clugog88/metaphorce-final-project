@@ -1,15 +1,17 @@
 package com.app.errors.exceptions;
 
+import com.app.errors.constants.ExceptionMessages;
+
 /** 
  * 
  * @Author Ing. Christhian Lugo Govea.
  */
-public class UsernameNotFoundException extends AppException {
+public class UsernameNotFoundException extends RuntimeException {
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 4159485892217925233L;
 
 	public UsernameNotFoundException() {
-        super("Username not found exception.");
+        super( ExceptionMessages.EXCEPTION_MESSAGE__UsernameNotFound );
     }
 	
 	public UsernameNotFoundException(String message) {

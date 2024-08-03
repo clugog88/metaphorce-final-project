@@ -9,10 +9,10 @@ import org.springframework.validation.BindingResult;
  * 
  * @Author Ing. Christhian Lugo Govea.
  */
-public class InvalidParametersException extends AppException {
+public class InvalidParametersException extends RuntimeException {
 	
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 2467582393696771710L;
+
 	public InvalidParametersException(String message) {
 		 super( message );
     }

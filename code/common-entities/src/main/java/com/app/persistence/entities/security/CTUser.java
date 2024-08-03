@@ -2,52 +2,38 @@ package com.app.persistence.entities.security;
 
 import java.io.Serializable;
 
-import com.app.persistence.entities.security.support.RoleEnum;
-import com.app.persistence.entities.security.support.RoleEnumAttributeConverter;
+import com.app.persistence.entities.security.enums.UserRoleEnum;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/** 
- * 
+/**
  * @Author Ing. Christhian Lugo Govea.
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "ct_user")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class CTUser implements Serializable {
 	
-	private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = -5727362636517041946L;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@Column(name = "username", unique = true, nullable = false)	
-	private String username;
-	
-	@Column(name = "password", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String lastname;
+    private String username;
 	private String password;
-	
-	@Enumerated( EnumType.STRING )
-	@Column(name = "role", nullable = false)
-	@Convert(converter = RoleEnumAttributeConverter.class)
-	private RoleEnum role;
+	private UserRoleEnum role;
 
-	public CTUser(Long id) {
-		this.id = id;
-	}
-	
 }

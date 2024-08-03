@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.app.configuration.components.JwtAuthenticationFilter;
 import com.app.errors.support.CustomAuthenticationEntryPoint;
-import com.app.persistence.entities.security.support.RoleEnum;
+import com.app.persistence.entities.security.enums.RoleEnum;
 
 /**
  * 

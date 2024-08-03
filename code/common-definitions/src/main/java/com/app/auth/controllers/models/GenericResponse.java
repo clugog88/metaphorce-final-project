@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.lang.Nullable;
 
 import com.app.errors.constants.ErrorMessages;
+import com.app.support.CustomDateSerializer;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
