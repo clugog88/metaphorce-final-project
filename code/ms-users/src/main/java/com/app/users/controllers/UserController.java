@@ -49,7 +49,7 @@ public class UserController {
 	@GetMapping(value = "/list")
 	@ResponseStatus(HttpStatus.OK)
 	public GenericResponse< List<RequestAddUser> > list(Authentication authentication) {
-		log.info("Lanzando la busqueda de la informacion.");
+		log.info("Launching the search for information.");
 		List<RequestAddUser> list = userServices.getList();
 		return GenericResponse.ok( list );
 	}
@@ -58,12 +58,12 @@ public class UserController {
 	@ResponseStatus(HttpStatus.OK)
 	public GenericResponse<CTUser> getById(@PathVariable("id") Long id, Authentication authentication) {
 		
-		log.info("Validando los parametros recibidos.");
+		log.info("Validating the received parameters.");
 		if(id == null) {
 			throw new InvalidParametersException( "El campo 'id' no puede estar vacio." );
 		}
 		
-		log.info("Lanzando la busqueda de la informacion.");
+		log.info("Launching the search for information.");
 		CTUser user = userServices.getById( id );
 		return GenericResponse.ok( user );
 	}
@@ -72,7 +72,7 @@ public class UserController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public GenericResponse<Void> add(@Valid @RequestBody RequestAddUser dto, BindingResult bindingResult, Authentication authentication){
 		
-		log.info("Validando los parametros recibidos.");
+		log.info("Validating the received parameters.");
 		if(bindingResult.hasErrors()) {
 			throw InvalidParametersException.parseToException( bindingResult );
 		}
@@ -83,7 +83,7 @@ public class UserController {
 		}
 		dto.setRoleEnum( role );
 		
-		log.info("Lanzando el guardado de la informacion.");
+		log.info("Launching the saving of information.");
 		userServices.save( dto );
 		return GenericResponse.ok();
 	}
@@ -92,7 +92,7 @@ public class UserController {
 	@ResponseStatus(HttpStatus.OK)
 	public GenericResponse<Void> update(@Valid @RequestBody RequestUpdateUser dto, BindingResult bindingResult, Authentication authentication){
 		
-		log.info("Validando los parametros recibidos.");
+		log.info("Validating the received parameters.");
 		if(bindingResult.hasErrors()) {
 			throw InvalidParametersException.parseToException( bindingResult );
 		}
@@ -103,7 +103,7 @@ public class UserController {
 		}
 		dto.setRoleEnum( role );
 		
-		log.info("Lanzando la actualizacion de la informacion.");
+		log.info("Launching the information update.");
 		userServices.update( dto );
 		return GenericResponse.ok();
 	}
@@ -112,12 +112,12 @@ public class UserController {
 	@ResponseStatus(HttpStatus.OK)
 	public GenericResponse<Void> updatePassword(@Valid @RequestBody RequestUpdateUserPassword dto, BindingResult bindingResult, Authentication authentication){
 		
-		log.info("Validando los parametros recibidos.");
+		log.info("Validating the received parameters.");
 		if(bindingResult.hasErrors()) {
 			throw InvalidParametersException.parseToException( bindingResult );
 		}
 		
-		log.info("Lanzando la actualizacion de la informacion.");
+		log.info("Launching the information update.");
 		userServices.updatePassword( dto );
 		return GenericResponse.ok();
 	}
@@ -126,12 +126,12 @@ public class UserController {
 	@ResponseStatus(HttpStatus.OK)
     public GenericResponse<Void> delete(@PathVariable("id") Long id, Authentication authentication){
 		
-		log.info("Validando los parametros recibidos.");
+		log.info("Validating the received parameters.");
 		if(id == null) {
 			throw new InvalidParametersException( "El campo 'id' no puede estar vacio." );
 		}
 		
-		log.info("Lanzando la eliminacion de la informacion.");
+		log.info("Launching the elimination of information.");
 		userServices.delete( id );
 		return GenericResponse.ok();
 	}

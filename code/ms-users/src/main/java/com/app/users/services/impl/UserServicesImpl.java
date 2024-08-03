@@ -37,7 +37,7 @@ public class UserServicesImpl implements UserServices {
 	
 	@Override
 	public List<RequestAddUser> getList() {
-		log.info("Buscando la informacion de un usuario existente.");
+		log.info("Searching for information about an existing user.");
 		Iterable<CTUser> iterable = ctUserRepository.findAll();
 		if(iterable == null) {
 			return Collections.emptyList();
@@ -60,7 +60,7 @@ public class UserServicesImpl implements UserServices {
 	
 	@Override
 	public CTUser getById(Long id) {
-		log.info("Buscando la informacion de un usuario existente.");
+		log.info("Searching for information about an existing user.");
 		
 		Optional<CTUser> opt = ctUserRepository.findById( id );
 		if(opt.isEmpty()) {
@@ -72,7 +72,7 @@ public class UserServicesImpl implements UserServices {
 	
 	@Override
 	public Long save(RequestAddUser dto) {
-		log.info("Registrando un nuevo usuario.");
+		log.info("Registering a new user.");
 		
 		boolean exist = ctUserRepository.existsByUsername( dto.getUsername() );
 		if(exist) {
@@ -93,7 +93,7 @@ public class UserServicesImpl implements UserServices {
 	
 	@Override
 	public void update(RequestUpdateUser dto) {
-		log.info("Actualizando un usuario existente.");
+		log.info("Updating an existing user.");
 		
 		Optional<CTUser> opt = ctUserRepository.findById( dto.getId() );
 		if(opt.isEmpty()) {
@@ -108,7 +108,7 @@ public class UserServicesImpl implements UserServices {
 	
 	@Override
 	public void updatePassword(RequestUpdateUserPassword dto) {
-		log.info("Actualizando un usuario existente.");
+		log.info("Updating an existing user.");
 		
 		Optional<CTUser> opt = ctUserRepository.findById( dto.getId() );
 		if(opt.isEmpty()) {
@@ -124,7 +124,7 @@ public class UserServicesImpl implements UserServices {
 	
 	@Override
 	public void delete(Long id) {
-		log.info("Eliminando un usuario existente.");
+		log.info("Deleting an existing user.");
 		
 		boolean exist = ctUserRepository.existsById( id );
 		if(!exist) {

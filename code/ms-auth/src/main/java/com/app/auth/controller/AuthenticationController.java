@@ -43,12 +43,12 @@ public class AuthenticationController {
 			@Valid @RequestBody AuthenticationRequest authRequest, 
 			BindingResult bindingResult){
 		
-		log.info("Validando los parametros recibidos.");
+		log.info("Validating the received parameters.");
 		if(bindingResult.hasErrors()) {
 			throw InvalidParametersException.parseToException( bindingResult );
 		}
 		
-		log.info("Lanzando la autenticacion del usuario.");
+		log.info("Launching user authentication.");
 		UserDetails authUser = authenticationService.authenticate( authRequest );
 		String jwtToken = jwtService.generateToken( authUser );
         long expirationTime = jwtService.getExpirationTime();
